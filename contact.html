@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome </title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom right, #fef9c3, #fff, #fef9c3);
+      color: #111827;
+    }
+
+    section.hero {
+      position: relative;
+      overflow: hidden;
+      padding: 60px 20px;
+    }
+
+    /* Background decorations */
+    .bg-decor {
+      position: absolute;
+      inset: 0;
+      opacity: 0.3;
+    }
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(40px);
+    }
+    .circle1 { top: 40px; left: 40px; width: 80px; height: 80px; background: #fde68a; }
+    .circle2 { bottom: 40px; right: 40px; width: 120px; height: 120px; background: #fa1515; }
+    .circle3 { top: 50%; left: 50%; transform: translate(-50%, -50%); width: 160px; height: 160px; background: #fef9c3; filter: blur(60px); }
+
+    .hero-inner {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+      animation: fadeUp 1s ease forwards;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fef9c3;
+      border: 1px solid #fd8a8a;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #e1dcd7;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 48px;
+      margin: 0 0 20px;
+      color: #111827;
+    }
+    .hero h1 span { color: #ca0404; }
+
+    .hero p {
+      font-size: 18px;
+      color: #4b5563;
+      margin-bottom: 30px;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ca0404;
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 18px;
+      text-decoration: none;
+      transition: 0.3s;
+      box-shadow: 0 4px 12px rgba(203, 203, 202, 0.5);
+    }
+    .btn:hover { background: #a10707; }
+
+    .hours {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+      color: #4b5563;
+      font-size: 15px;
+    }
+
+    /* Contact Info cards */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      max-width: 800px;
+      margin: 50px auto 0;
+      animation: fadeUp 1.2s ease forwards;
+    }
+    @media (min-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .card {
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(6px);
+      border: 1px solid #feccc7;
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+    .card:hover { transform: translateY(-4px); }
+
+    .icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: #fec3c3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: #ca4304;
+      flex-shrink: 0;
+    }
+
+    .card h3 {
+      margin: 0 0 6px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .card p { font-size: 14px; color: #4b5563; line-height: 1.4; }
+    .card a {
+      font-size: 22px;
+      font-weight: bold;
+      color: #aeabae;
+      text-decoration: none;
+    }
+    .card a:hover { color: #a13807; }
+
+    /* Fade animation */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <!-- Background decorations -->
+    <div class="bg-decor">
+      <div class="circle circle1"></div>
+      <div class="circle circle2"></div>
+      <div class="circle circle3"></div>
+    </div>
+
+    <div class="hero-inner">
+      <div class="badge">⭐ Premium Cafe</div>
+      
+      <h1>Welcome<br><span>Family Rasoi</span></h1>
+      
+      <p>
+        Experience authentic Indian cuisine crafted with love, tradition, 
+        and the finest ingredients. Your family's satisfaction is our priority.
+      </p>
+
+      <a href="tel:8860169518" class="btn">📞 Call Now</a>
+
+      <div class="hours">⏰ Open Daily • Timing: 11 am To 4 pm. 6 pm to 11 pm.</div>
+    </div>
+
+    <!-- Contact Info Cards -->
+    <div class="contact-grid">
+      <div class="card">
+        <div class="icon-box">📍</div>
+        <div>
+          <h3>Our Location</h3>
+          <p>
+            F-407/3 Harsh Vihar Part -II Shukar Bazar Raod, Near Tanki Road, Aggarwal Sweet,
+Hari Nagar, Badarpur, New Delhi-44
+          </p>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="icon-box">📞</div>
+        <div>
+          <h3>Contact Us</h3>
+          <a href="tel:8860169518">8860169518</a>
+          <p>Available 24/7 for reservations</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

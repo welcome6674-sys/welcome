@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome</title>
+  <head>
+  <style>
+    :root {
+      --primary: #df2727;       /* Bright red */
+      --primary-dark: #ba3d3d;  /* Darker red */
+      --accent: #862020;        /* Deep accent red */
+      --background: #ffffff;    /* White */
+      --text: #111;             /* Main text */
+      --muted: #555;
+      --light-red-bg: #fff5f5;  /* Light red for backgrounds */
+      --light-red-overlay: rgba(220, 38, 38, 0.55); /* Red semi-transparent overlay */
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--background);
+      color: var(--text);
+    }
+
+    /* ===== Navbar ===== */
+    header {
+      background: var(--light-red-bg);
+      border-bottom: 1px solid #fecaca;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    header h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 20px;
+      color: var(--accent);
+      margin: 0;
+    }
+    nav {
+      display: flex;
+      gap: 16px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #444;
+      font-weight: 500;
+      font-size: 15px;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: var(--primary);
+    }
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+    @media (max-width: 768px) {
+      nav {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: #ffe4e6;
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+        border: 1px solid #d5afaf;
+        border-radius: 8px;
+        display: none;
+      }
+      nav.show {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+    .hero::after {
+  content: none;
+}
+
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      padding: 0 20px;
+    }
+    .hero h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(28px, 5vw, 44px);
+      margin-bottom: 16px;
+    }
+    .hero p {
+      font-size: clamp(15px, 3.5vw, 18px);
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s;
+      font-size: 16px;
+    }
+    .btn:hover {
+      background: var(--primary-dark);
+    }
+
+    /* ===== Sections ===== */
+    section {
+      padding: 60px 20px;
+    }
+    section h2 {
+      text-align: center;
+      font-family: "Playfair Display", serif;
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+    section h2 span {
+      display: block;
+      color: var(--accent);
+      font-size: 18px;
+      margin-top: 5px;
+    }
+    .section-desc {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 40px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* ===== Cards ===== */
+    .categories, .facilities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .category-card, .facility-card {
+      background: var(--background);
+      border: 1px solid #dbd6d6;
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      transition: 0.3s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s forwards;
+    }
+    .category-card:hover, .facility-card:hover {
+      transform: translateY(-6px) scale(1.03);
+      border-color: var(--primary);
+      box-shadow: 0 8px 18px rgba(232, 93, 93, 0.3);
+    }
+    .icon-box {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 14px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #fee2e2, #fecaca);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+    }
+    .category-title, .facility-title {
+      font-weight: bold;
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      padding: 4px 10px;
+      background: #fee2e2;
+      border: 1px solid #fca5a5;
+      border-radius: 999px;
+      color: var(--accent);
+      font-weight: 500;
+    }
+    .facility-desc {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background: var(--light-red-bg);
+      padding: 25px 20px;
+      text-align: center;
+      border-top: 1px solid #fecaca;
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* ===== Animations ===== */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <!-- (Your existing body content) -->
+</body>
+
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <h1>🍴 Welcome Family Rasoi</h1>
+    <button class="menu-toggle">☰</button>
+    <nav>
+      <a href="#menu">Menu</a>
+      <a href="#facilities">Facilities</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Welcome to Welcome Family Rasoi</h2>
+      <p>Enjoy premium dining with delicious flavors, crafted with love, and served in a warm family-friendly environment.</p>
+      <a href="#menu" class="btn">Explore Menu</a>
+      <a href="https://www.swiggy.com/city/faridabad/welcome-family-rasoi-border-badarpur-rest586875?source=sharing" target="_blank" class="btn" style="background:#da281f; display:inline-block; margin-top:10px;">
+     Order on Swiggy
+  </a>
+    </div>
+  </section>
+
+  <!-- Menu Categories -->
+  <!-- Menu Categories -->
+<section id="menu">
+  <h2>Our Specialties <span>Menu Categories</span></h2>
+  <p class="section-desc">Choose from a variety of freshly prepared dishes across multiple categories.</p>
+  <style>.categories a {
+  text-decoration: none;   /* remove underline */
+  color: inherit;          /* keep same text color */
+  display: block;          /* make whole card clickable */
+}
+.categories a:hover {
+  color: inherit;          /* prevent turning blue on hover */
+}
+</style>
+
+  <div class="categories">
+    <a href="Non Veg Tandoori Snacks.html" class="category-card">
+      <div class="icon-box">🍳</div>
+      <div class="category-title">Non Veg Tandoori Snacks</div>
+      <div class="badge">⭐ Premium</div>
+    </a>
+
+    <a href="gravy mutton.html" class="category-card">
+      <div class="icon-box">🥩</div>
+      <div class="category-title">Gravy Mutton</div>
+      <div class="badge">⭐ Premium</div>
+    </a>
+
+    <a href="roll.html" class="category-card">
+      <div class="icon-box">🥐</div>
+      <div class="category-title">Roll</div>
+      <div class="badge">⭐ Premium</div>
+    </a>
+
+   
+
+    
+
+    <a href="gravy chicken.html" class="category-card">
+      <div class="icon-box">🍗</div>
+      <div class="category-title">Gravy Chicken</div>
+      <div class="badge">⭐ Premium</div>
+    </a>
+
+    <a href="chinese veg.html" class="category-card">
+      <div class="icon-box">🌮</div>
+      <div class="category-title">Chainese Veg</div>
+      <div class="badge">⭐ Premium</div>
+    </a>
+     <a href="chinese non veg.html" class="category-card">
+      <div class="icon-box">🍤</div>
+      <div class="category-title">Chinese Non Veg</div>
+      <div class="badge">⭐ Premium</div>
+    </a>
+     <a href="beverages.html" class="category-card">
+      <div class="icon-box">🍶</div>
+      <div class="category-title">Beverages</div>
+      <div class="badge">⭐ Premium</div>
+    </a>
+     <a href="Desserts.html" class="category-card">
+      <div class="icon-box">🍰</div>
+      <div class="category-title">Desserts</div>
+      <div class="badge">⭐ Premium</div>
+    </a>
+     
+     <a href="soup.html" class="category-card">
+      <div class="icon-box">🍲</div>
+      <div class="category-title">Soup</div>
+      <div class="badge">⭐ Premium</div>
+    </a>
+     <a href="momos.html" class="category-card">
+      <div class="icon-box">🥟</div>
+      <div class="category-title">Momos</div>
+      <div class="badge">⭐ Premium</div>
+    </a>
+     
+    
+     <a href="spl chaap corner.html" class="category-card">
+      <div class="icon-box">🫕</div>
+      <div class="category-title">SPL. CHAP CORNER</div>
+      <div class="badge">⭐ Premium</div>
+    </a>
+    <a href="biryani.html" class="category-card">
+      <div class="icon-box">🍛</div>
+      <div class="category-title">Biryani</div>
+      <div class="badge">⭐ Premium</div>
+    </a>
+    <a href="veg tandoori anacks.html" class="category-card">
+      <div class="icon-box">🥗</div>
+      <div class="category-title">Veg Tandoori Snacks</div>
+      <div class="badge">⭐ Premium</div>
+    </a>
+    <a href="sabzi dal.html" class="category-card">
+      <div class="icon-box">🥘</div>
+      <div class="category-title">Sabzi Dal</div>
+      <div class="badge">⭐ Premium</div>
+    </a>
+    <a href="pulao.html" class="category-card">
+      <div class="icon-box">🍚</div>
+      <div class="category-title">Pulao</div>
+      <div class="badge">⭐ Premium</div>
+    </a>
+    <a href="shake.html" class="category-card">
+      <div class="icon-box">🍹</div>
+      <div class="category-title">Shake</div>
+      <div class="badge">⭐ Premium</div>
+    </a>
+    <a href="pizza.html" class="category-card">
+      <div class="icon-box">🍕</div>
+      <div class="category-title">Pizza</div>
+      <div class="badge">⭐ Premium</div>
+    </a>
+     <a href="paneer.html" class="category-card">
+      <div class="icon-box">🍝</div>
+      <div class="category-title">Paneer (Gravy)</div>
+      <div class="badge">⭐ Premium</div>
+    </a>
+     <a href="roti.html" class="category-card">
+      <div class="icon-box">🫔</div>
+      <div class="category-title">Roti</div>
+      <div class="badge">⭐ Premium</div>
+    </a>
+     <a href="raita & salad.html" class="category-card">
+      <div class="icon-box">🥛</div>
+      <div class="category-title">Raita/Salad</div>
+      <div class="badge">⭐ Premium</div>
+    </a>
+     
+  </div>
+  
+
+</section>
+
+
+  <!-- Facilities -->
+  <section id="facilities">
+    <h2>आपके लिए सुविधाएँ <span>Premium Facilities</span></h2>
+    <p class="section-desc">We provide exceptional facilities to ensure your dining experience is comfortable and memorable.</p>
+
+    <div class="facilities-grid">
+      <div class="facility-card"><div class="icon-box">❄️</div><div class="facility-title">Air Conditioned</div><div class="facility-desc">Comfortable dining in all seasons</div></div>
+      <div class="facility-card"><div class="icon-box">🚗</div><div class="facility-title">Free Parking</div><div class="facility-desc">Convenient parking space available</div></div>
+      <div class="facility-card"><div class="icon-box">📶</div><div class="facility-title">Free Wi-Fi</div><div class="facility-desc">Stay connected while you dine</div></div>
+      <div class="facility-card"><div class="icon-box">👨‍👩‍👧‍👦</div><div class="facility-title">Family Friendly</div><div class="facility-desc">Perfect atmosphere for families</div></div>
+      <div class="facility-card"><div class="icon-box">🛡️</div><div class="facility-title">Hygienic Kitchen</div><div class="facility-desc">Maintained to highest standards</div></div>
+      <div class="facility-card"><div class="icon-box">💧</div><div class="facility-title">BLUW Water</div><div class="facility-desc">Premium packaged drinking water</div></div>
+      <div class="facility-card"><div class="icon-box">❤️</div><div class="facility-title">Made with Love</div><div class="facility-desc">Every dish crafted with care</div></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <p>📍 Welcome Family Rasoi • Near City Center • Open 10AM - 11PM</p>
+    <p>☎️ Contact: 8860169518 | © 2025 Welcome Rasoi</p>
+    <a href="https://www.swiggy.com/city/faridabad/welcome-family-rasoi-border-badarpur-rest586875?source=sharing" target="_blank" class="btn" style="background:#fc8019; display:inline-block; margin-top:10px;">
+    🛵 Order on Swiggy
+  </a>
+  </footer>
+
+  <script>
+    
+    // Mobile nav toggle
+    document.querySelector(".menu-toggle").addEventListener("click", () => {
+      document.querySelector("nav").classList.toggle("show");
+    });
+
+    // Stagger fade animations
+    document.querySelectorAll('.category-card, .facility-card').forEach((card, i) => {
+      card.style.animationDelay = (i * 0.1) + "s";
+    });
+    
+  </script>
+</body>
+</html>
